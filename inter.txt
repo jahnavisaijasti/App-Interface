@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .navbar-custom {
+            background-color: #000000e8;
+        }
+        .modal-custom {
+            background-color: rgba(0, 0, 0, 0.603);
+            color: white;
+            border-radius: 10px;
+        }
+        .modal-header-custom {
+            border-bottom: none;
+        }
+        .modal-footer-custom {
+            border-top: none;
+        }
+        .form-control {
+            background-color: #ececec;
+            color: white;
+            border: 1px solid #30cce7;
+        }
+        .btn-custom {
+            background-color: #ffffff;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #b15c12;
+        }
+        .hero-section {
+            position: relative;
+            text-align: center;
+            color: rgb(248, 246, 246);
+        }
+        .hero-section img {
+            width: 100%;
+            height: auto;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .content-section {
+            padding: 2rem;
+        }
+        .content-section h2 {
+            margin-bottom: 1.5rem;
+        }
+        .book-card {
+            border: none;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+        .book-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+        }
+        .book-card-title {
+            font-size: 1.25rem;
+            margin-top: 0.75rem;
+        }
+        .footer {
+            background-color: #020202;
+            padding: 2rem 0;
+            color: beige;
+            text-align: center;
+        }
+        .container-fluid{
+            background-color: #aeeef3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/iconbook.jpeg" alt="Logo" width="35" height="30" class="d-inline-block align-text-top">
+                Storyland
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Books
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Free Readable Books</a>
+                          <a class="dropdown-item" href="#">Borrowed Books</a>
+                          <a class="dropdown-item" href="#">Currently Reading</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Classic</a>
+                          <a class="dropdown-item" href="#">Popular</a>
+                          <a class="dropdown-item" href="#">Others</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="d-flex ml-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <a class="btn btn-outline-primary ml-2" href="#" data-toggle="modal" data-target="#signinModal">Sign In</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid p-0 hero-section">
+        <img class="img" src="https://wallpaper.forfun.com/fetch/86/868e200a187f38af6340b16da5772cb9.jpeg" alt="Hero Image">
+        <div class="hero-text">
+            <h1>Welcome to Storyland</h1>
+            <p>Your online library for a world of stories</p>
+            <a class="btn btn-custom btn-lg" href="#" data-toggle="modal" data-target="#signupModal">Join Now</a>
+        </div>
+    </div>
+    <div class="container-fluid content-section">
+        <h2>Popular Books</h2>
+        <div id="popularBooksCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/it ends with.jpeg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title" class="text-light-emphasis">It Ends With Us</h5>
+                                    <p class="card-text">Collen Hoover</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/uglylove.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Ugly Love</h5>
+                                    <p class="card-text">Collen Hoover</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/greed.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">King Of Greed</h5>
+                                    <p class="card-text">Ana Huang</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/twisted.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Twisted Love</h5>
+                                    <p class="card-text">Ana Huang</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/charolletes.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Charlotte's Web</h5>
+                                    <p class="card-text">E.B. White</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/chandamama.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Chandamama Kathalu</h5>
+                                    <p class="card-text">M.V.V. Satyanarayana</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/giraffe.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Giraffes Can't Dance</h5>
+                                    <p class="card-text">Giles Andreae</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/who sank.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Who Sank the Boat?</h5>
+                                    <p class="card-text">Pamela Allen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#popularBooksCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#popularBooksCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <h2>New Arrivals</h2>
+        <div id="newArrivalsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/tarzan.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Tarzan</h5>
+                                    <p class="card-text">Edgar Rice Burroughs</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/lord of the rings.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Lord of the Rings</h5>
+                                    <p class="card-text">J.R.R. Tolkien</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/Journey.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Journey to the Center of the Earth</h5>
+                                    <p class="card-text">Jules Verne</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/hobbit.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">The Hobbit</h5>
+                                    <p class="card-text">J.R.R. Tolkien</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/each.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Each Peach Pear Plum</h5>
+                                    <p class="card-text">Janet and Allan Ahlberg</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/bookof.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">The Book of Lost Names</h5>
+                                    <p class="card-text">Kristin Harmel</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/sweet.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">A Sweet Sting of Salt</h5>
+                                    <p class="card-text">Rose Sutherland</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card book-card">
+                                <img src="images/love.jpg" class="card-img-top" alt="Book Image">
+                                <div class="card-body">
+                                    <h5 class="book-card-title">Love You, Mean It</h5>
+                                    <p class="card-text">Jilly Gagnon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#newArrivalsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#newArrivalsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-custom">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="signupModalLabel">Register for a Storyland Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group float-left w-100">
+                            <label for="signupUsername" class="float-left">Username</label>
+                            <input type="text" class="form-control float-right" id="signupUsername" placeholder="Enter username">
+                        </div>
+                        <div class="form-group float-left w-100">
+                            <label for="signupEmail" class="float-left">E-mail</label>
+                            <input type="email" class="form-control float-right" id="signupEmail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group float-left w-100">
+                            <label for="signupPassword" class="float-left">Password</label>
+                            <input type="password" class="form-control float-right" id="signupPassword" placeholder="Enter password">
+                        </div>
+                        <div class="form-group float-left w-100">
+                            <label for="signupPhone" class="float-left">Phone no</label>
+                            <input type="text" class="form-control float-right" id="signupPhone" placeholder="Enter phone number">
+                        </div>
+                        <div class="form-check float-left w-100">
+                            <input type="checkbox" class="form-check-input float-left" id="termsCheck">
+                            <label class="form-check-label float-left" for="termsCheck">Agree to <a href="#">terms and conditions</a></label>
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-block mt-3 float-none">Sign Up</button>
+                    </form>
+                    <div class="text-center mt-3 float-none">
+                        <button class="btn btn-outline-light btn-block mb-2">Continue with Google</button>
+                        <button class="btn btn-outline-light btn-block">Continue with Apple</button>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-custom float-none">
+                    <div class="w-100 text-center float-none">
+                        Existing Member? <a href="#" id="signinLink" data-dismiss="modal" data-toggle="modal" data-target="#signinModal">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-custom">
+                <div class="modal-header modal-header-custom">
+                    <h5 class="modal-title" id="signinModalLabel">Sign In to Storyland</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group float-left w-100">
+                            <label for="signinEmail" class="float-left">E-mail</label>
+                            <input type="email" class="form-control float-right" id="signinEmail">
+                        </div>
+                        <div class="form-group float-left w-100">
+                            <label for="signinPassword" class="float-left">Password</label>
+                            <input type="password" class="form-control float-right" id="signinPassword" placeholder="Enter password">
+                        </div>
+                        <button type="submit" class="btn btn-custom btn-block mt-3 float-none">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3 float-none">
+                        <button class="btn btn-outline-light btn-block mb-2">Continue with Google</button>
+                        <button class="btn btn-outline-light btn-block">Continue with Apple</button>
+                    </div>
+                </div>
+                <div class="modal-footer modal-footer-custom float-none">
+                    <div class="w-100 text-center float-none">
+                        New to Storyland? <a href="#" id="signupLink" data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <footer class="footer">
+        <p>&copy; 2024 Storyland. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Book Genres</h5>
+            <button type="button" class="close" data-dismiss="offcanvas" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#">Fantasy</a></li>
+                    <li class="list-group-item"><a href="#">Science Fiction</a></li>
+                    <li class="list-group-item"><a href="#">Mystery</a></li>
+                    <li class="list-group-item"><a href="#">Romance</a></li>
+                    <li class="list-group-item"><a href="#">Horror</a></li>
+                    <li class="list-group-item"><a href="#">Non-fiction</a></li>
+                    <li class="list-group-item"><a href="#">Biography</a></li>
+                    <li class="list-group-item"><a href="#">History</a></li>
+                    <li class="list-group-item"><a href="#">Self-help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
